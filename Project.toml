@@ -1,0 +1,4 @@
+name = "PolyaDataStructures"
+uuid = "68a5617c-cc28-44f0-83bd-8c98376c0d97"
+authors = ["Michiel Van Lancker <michiel.vanlancker@cs.kuleuven.be>"]
+version = "0.1.0"
