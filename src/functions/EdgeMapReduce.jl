@@ -1,5 +1,12 @@
 
 #TODO Add Δmapreduce implementation fot AbstractArrays.
+"""
+eachedge(v::AbstractArray)
+
+Return the set of edges belonging to v
+"""
+eachedge(v::AbstractArray) = ((v[i],v[i+1]) for i in 1:length(v)-1)
+
 
 """
     EdgeMapReduce
@@ -19,6 +26,21 @@ struct EdgeMapReduce{F, R, V}
     mapf::F
     redop::R
     neutral_el::V
+end
+
+neutral(T, ::typeof(+)) = zero(T)
+neutral(T, ::typeof(-)) = zero(T)
+neutral(T, ::typeof(*)) = one(T)
+neutral(T, ::typeof(/)) = one(T)
+
+
+
+const EdgeMapReduceMemoized{R,V} = EdgeMapReduce{Matrix{V},R,V}
+
+function EdgeMapReduceMemoized(f, r, s)
+    M = map(e -> f(e...), Iterators.product(s,s))
+    EdgeMapReduce(M, r, neutral(eltype(M), r))
+
 end
 
 #TODO: Reimplement EdgeMapReduce Δmapreduce-functions to work with the inverse of operators

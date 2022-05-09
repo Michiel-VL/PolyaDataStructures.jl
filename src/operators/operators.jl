@@ -9,6 +9,7 @@
 # 7. shift!(s, i, j): move the element at position `i` in `s` to position `j`.
 
 
+
 """
     swap!(s, i, j)
 
@@ -24,7 +25,7 @@ end
 
 Invert sequence in `s` between indices `i` and `j`. Assumes `i` < `j`.
 """
-function twoopt!(s::AbstractArray, i, j)
+function twoopt!(s, i, j)
     ub = abs(j-i) ÷ 2
     i,j = minmax(i,j)
     r = i < j ? (0:ub) : (ub:-1:0)
@@ -39,7 +40,7 @@ end
 
 Shift entry at index `i` in `s` to index `j`.
 """
-function shift!(s::AbstractArray, i, j)
+function shift!(s, i, j)
     r = i < j ? (i:j-1) : (i-1):-1:j
     for k in r
         swap!(s,k, k+1)

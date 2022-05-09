@@ -2,10 +2,19 @@
 """
     struct DisjointUnionIterator{I,E}
 
-Iterates over the disjoint union of a set of collections. 
+Iterator for the disjoint union of a set of collections. The disjoint union of sets \$A_1 = /{a,b,c/}\$ and \$A_2 = /{d,e/}\$ is  \$A_1 ⊔ A_2 = /{(1,a),(1,b),(1,c),(2,d),(2,e)/}\$.
 
 ## Example
-julia> 
+julia> iter = DisjointUnionIterator([[:a,:b],[:c,:d]])
+[:a, :b] ⊔ [:c, :d]
+
+julia> collect(iter)
+4-element Vector{Tuple{Int64, Symbol}}:
+ (1, :a)
+ (1, :b)
+ (2, :c)
+ (2, :d)
+
 """
 struct DisjointUnionIterator{I,E}
     iters::I
