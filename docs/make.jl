@@ -1,4 +1,4 @@
-push!(LOAD_PATH, "../src/")
+ENV["GKSwstype"] = "100"
 using Documenter, PolyaDataStructures
 
 makedocs(modules = [PolyaDataStructures],
