@@ -1,4 +1,4 @@
-# DataStructures
+# Datastructures
 
 ## Tour
 Representation for a tour. Essentially boils down to a wrapper-type for `AbstractArray`s. The wrapper provides function `eachedge(t)', which returns pairs of successive elements in the tour (in other words, the sequence of edges which define the tour). 
