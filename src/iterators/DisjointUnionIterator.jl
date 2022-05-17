@@ -34,6 +34,8 @@ Base.length(D::DisjointUnionIterator) = first(size(D))
 Base.eltype(::DisjointUnionIterator{I,E}) where {I,E} = E
 Base.eltype(::Type{DisjointUnionIterator{I,E}}) where {I,E} = Tuple{Int,eltype(eltype(I))}
 
+Base.last(D::DisjointUnionIterator) = (length(D.iters), last(last(D.iters)))
+
 function Base.iterate(D::DisjointUnionIterator)
     iters = iterators(D)
     ret = iterate(first(iters))

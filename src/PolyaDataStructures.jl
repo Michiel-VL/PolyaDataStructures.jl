@@ -1,5 +1,6 @@
 module PolyaDataStructures
     
+    using TupleTools, RecipesBase
 
     include("operators/operators.jl")
     include("operators/operatorviews.jl")
@@ -11,11 +12,28 @@ module PolyaDataStructures
     export Tour, TourWithOrigin, EdgeIter, eachedge, RepresentationSequence
 
     include("iterators/EdgeIter.jl")
+    include("iterators/OrderedProductIterator.jl")
     include("iterators/DisjointUnionIterator.jl")
-    export EdgeIter, DisjointUnionIterator
+    include("iterators/OffsetOrderIterator.jl")
+    include("iterators/QuadraticIterators.jl")
+    export EdgeIter, 
+            OrderedProductIterator,
+            orderedproduct,
+            DisjointUnionIterator, 
+            OffsetOrderIterator, 
+            LowerTriMatrixIterator,
+            NoDiagMatrixIterator,
+            LTMI,
+            NDMI,
+            ColMajor,
+            RowMajor,
+            DiagMajor
             
     include("functions/EdgeMapReduce.jl")
     export EdgeMapReduce, Δmapreduce
+
+    include("plotrecipes/enumerationplot.jl")
+    export enumerationplot, enumerationplot!
 
     export indexset, ×
 
@@ -32,6 +50,14 @@ module PolyaDataStructures
         return getindex(s[j], t)
     end
 
+    function Base.setindex!(s::A, v, i::Tuple) where {A <: AbstractArray}
+        j = first(i)
+        t = Base.tail(i)
+        length(t) == 1 && return setindex!(s[j], v, first(t))
+        return setindex!(s[j], v, t)
+
+    end
+
     const × = Iterators.product
 
 
@@ -39,3 +65,4 @@ module PolyaDataStructures
 #Polya.objtype(e::EdgeMapReduce) = objtype(typeof(e))
 
 end # module
+

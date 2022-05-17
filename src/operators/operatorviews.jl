@@ -4,7 +4,8 @@ Base.length(v::P) where {P <: AbstractPermutationView} = length(v.v)
 Base.size(v::P) where {P <: AbstractPermutationView} = size(v.v)
 Base.IndexStyle(::Type{P}) where {E, N, A, P <: AbstractPermutationView{E, N, A}} = IndexStyle(A)
 
-Base.getindex(v::P, i) where {P <: AbstractPermutationView} = haschange(v, i) ? v.v[project(v, i)] : v.v[i]
+Base.getindex(v::P, i::Int) where {P <: AbstractPermutationView} = haschange(v, i) ? v.v[project(v, i)] : v.v[i]
+
 
 """
     PermOpView{E, N, A <: AbstractArray{E,N}, F,  Φ}
