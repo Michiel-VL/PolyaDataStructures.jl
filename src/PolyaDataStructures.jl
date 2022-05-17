@@ -8,8 +8,7 @@ module PolyaDataStructures
 
     include("structs/Tour.jl")
     include("structs/TourWithOrigin.jl")
-    include("structs/Composite.jl")
-    export Tour, TourWithOrigin, EdgeIter, eachedge, RepresentationSequence
+    export Tour, TourWithOrigin, EdgeIter, eachedge
 
     include("iterators/EdgeIter.jl")
     include("iterators/OrderedProductIterator.jl")
@@ -20,7 +19,8 @@ module PolyaDataStructures
             OrderedProductIterator,
             orderedproduct,
             DisjointUnionIterator, 
-            OffsetOrderIterator, 
+            OffsetOrderIterator,
+            offsetorder,
             LowerTriMatrixIterator,
             NoDiagMatrixIterator,
             LTMI,

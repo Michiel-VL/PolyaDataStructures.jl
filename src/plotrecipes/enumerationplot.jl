@@ -51,8 +51,8 @@ julia> enumerationplot(Φ, dims)
             seriestype := :quiver
             color := :black
             arrow := :closed
-            headlength := 0.5
-            headwidth := 0.5
+            headlength := 1
+            headwidth := 1
             quiver := get_arrows(X[1:end],Y[1:end])
             X[1:end-1], Y[1:end-1]
         end

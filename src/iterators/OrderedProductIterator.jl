@@ -20,7 +20,7 @@ end
 orderedproduct(order, iterators...) = OrderedProductIterator(iterators, order)
 
 
-Base.eltype(::OrderedProductIterator{I,N}) where {I,N} = eltype(ProductIterator{I})
+Base.eltype(::Type{OrderedProductIterator{I,N}}) where {I,N} = eltype(ProductIterator{I})
 
 
 Base.IteratorSize(::Type{OrderedProductIterator{I,N}}) where {I,N} = Base.IteratorSize(ProductIterator{I})
