@@ -6,3 +6,8 @@ makedocs(modules = [PolyaDataStructures],
     pages = ["Home" => "index.md",
              "Datastructures" => "datastructures.md",
              "Iterators" => "iterators.md"])
+
+
+deploydocs(
+    repo = "github.com/Michiel-VL/PolyaDataStructures.jl.git"
+)
