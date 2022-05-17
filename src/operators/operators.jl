@@ -1,15 +1,4 @@
 
-# We define following operators, primarily to be used for AbstractVectors.
-# 1. push!(s, e): add element `e` to the end of `s`.
-# 2. pop!(s): remove the last element from `s`.
-# 3. insert!(s, e, i): insert element `e` into `s` at position `i`.
-# 4. deleteat!(s,i): remove element at position `i` of `s`. 
-# 5. swap!(s, i, j): change the elements at positions `i` and `j` in `s` of place.
-# 6. twoopt!(s, i, j): invert the subsequence between positions `i` and `j` of `s`.
-# 7. shift!(s, i, j): move the element at position `i` in `s` to position `j`.
-
-
-
 """
     swap!(s, i, j)
 
