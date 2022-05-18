@@ -13,11 +13,11 @@ Given sets ``A,B``, the [Cartesian product](https://en.wikipedia.org/wiki/Cartes
 
 For example, if:
 ```math
-\begin{align}
+\begin{align*}
              A &= \{1,2,3 \} \\
              B &= \{1, 2\} \\
     A \times B &= \{(1,1),(1,2),(2,1),(2,2),(3,1),(3,2)\}
-\end{align}
+\end{align*}
 ```
 
 An iterator for the Cartesian product of sets (or `AbstractArray`s) is available in julia through the struct `Iterators.ProductIterator`. The `OrderedProductIterator` is similar to `Iterators.ProductIterator`, but allows the user to pass an order along with the sets. 
