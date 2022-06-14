@@ -55,7 +55,7 @@ Jr = Iterators.reverse(J)
 
 configs = Iterators.product(𝒯,𝒥,𝒥)
 Iset = map(c -> orderedproduct(c[1], c[2:end]...), configs)
-P = enumerationplot.(Iset, size.(Iset))
+P = enumerationplot.(Iset, Ref((n,n)))
 plot(P..., layout=(2,4), size = (800, 400))
 ``` 
 
