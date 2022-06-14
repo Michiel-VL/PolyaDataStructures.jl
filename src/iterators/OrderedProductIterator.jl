@@ -18,7 +18,7 @@ struct OrderedProductIterator{I, N}
 end
 
 orderedproduct(order, iterators...) = OrderedProductIterator(iterators, order)
-
+oproduct(order, iterators...) = OrderedProductIterator(iterators, order)
 
 Base.eltype(::Type{OrderedProductIterator{I,N}}) where {I,N} = eltype(ProductIterator{I})
 

@@ -31,6 +31,8 @@ returns an iterator over pairs of successive elements in `t`.
 eachedge(t::TourWithOrigin) = EdgeIter(t)
 
 
+
+
 Base.resize!(t::TourWithOrigin, i) = resize!(t.v, i-1) # -1 required because push! internally relies on length of p
 
 function Base.insert!(t::TourWithOrigin, i, e) 
@@ -49,3 +51,5 @@ function Base.pop!(t::TourWithOrigin)
 end
 
 indexset(t::TourWithOrigin) = eachindex(t)[2:end]
+
+Base.copy(t::TourWithOrigin) = TourWithOrigin(t.origin, copy(t.v))

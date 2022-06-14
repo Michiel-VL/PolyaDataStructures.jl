@@ -1,3 +1,6 @@
+push!(LOAD_PATH, "../src/")
+using Pkg
+Pkg.activate("..")
 ENV["GKSwstype"] = "100"
 using Documenter, PolyaDataStructures
 

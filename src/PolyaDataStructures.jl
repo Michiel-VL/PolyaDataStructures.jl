@@ -4,8 +4,12 @@ module PolyaDataStructures
 
     include("operators/operators.jl")
     include("operators/operatorviews.jl")
-    export swap!, twoopt!, shift!, opseq!, twooptseq, shiftseq, TwoOptView, ShiftView
+    export swap!, swap, twoopt!, twoopt, shift!, shift, opseq!, twooptseq, shiftseq, TwoOptView, ShiftView
 
+    include("functions/EdgeMapReduce.jl")
+    export EdgeMapReduce, EdgeMapReduceMemoized, Δmapreduce
+
+    include("structs/AbstractTour.jl")
     include("structs/Tour.jl")
     include("structs/TourWithOrigin.jl")
     export Tour, TourWithOrigin, EdgeIter, eachedge
@@ -15,9 +19,11 @@ module PolyaDataStructures
     include("iterators/DisjointUnionIterator.jl")
     include("iterators/OffsetOrderIterator.jl")
     include("iterators/QuadraticIterators.jl")
+    include("iterators/predefined_iterators.jl")
     export EdgeIter, 
             OrderedProductIterator,
             orderedproduct,
+            oproduct,
             DisjointUnionIterator, 
             OffsetOrderIterator,
             offsetorder,
@@ -27,10 +33,14 @@ module PolyaDataStructures
             NDMI,
             ColMajor,
             RowMajor,
-            DiagMajor
-            
-    include("functions/EdgeMapReduce.jl")
-    export EdgeMapReduce, Δmapreduce
+            DiagMajor,
+            colmajor,colmajor2,colmajor3,colmajor4,
+            rowmajor,rowmajor2,rowmajor3,rowmajor4,
+            ltmi,ndmi,
+            uppertriangle,lowertriangle,nodiagonal,
+            evenrows,evencols,oddrows,oddcols,
+            offset,offset2,offset3,offset4,
+            offset5,offset6,offset7,offset8
 
     include("plotrecipes/enumerationplot.jl")
     export enumerationplot, enumerationplot!
