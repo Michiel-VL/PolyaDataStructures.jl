@@ -5,6 +5,7 @@ makedocs(modules = [PolyaDataStructures],
     sitename = "PolyaDataStructures.jl",
     pages = ["Home" => "index.md",
              "Datastructures" => "datastructures.md",
+             "Operators" => "operators.md",
              "Iterators" => "iterators.md"])
 
 

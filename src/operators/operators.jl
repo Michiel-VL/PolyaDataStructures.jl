@@ -9,6 +9,8 @@ function swap!(s, i, j)
     return s
 end
 
+swap(s, i, j) = swap!(copy(s), i, j)
+
 """
     twoopt!(s, i, j)
 
@@ -24,6 +26,8 @@ function twoopt!(s, i, j)
     return s
 end
 
+twoopt(s, i, j) = twoopt!(copy(s), i, j)
+
 """
     shift!(s, i, j)
 
@@ -37,6 +41,7 @@ function shift!(s, i, j)
     return s
 end
 
+shift(s, i, j) = shift!(copy(s), i, j)
 
 """
     opseq!(s, f, Φ)

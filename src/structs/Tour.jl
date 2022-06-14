@@ -1,9 +1,3 @@
-abstract type AbstractTour{T} <: AbstractVector{T} end
-
-inedge(t::T, i) where {T <: AbstractTour} = i == 1 ? (t[end], t[i]) : (t[i-1],t[i]) 
-outedge(t::T, i) where {T <: AbstractTour} = i == length(t) ? (t[i], t[1]) : (t[i],t[i+1])
-inoutedges(t::T, i) where {T <: AbstractTour} = (i == 1 ? t[end] : t[i-1]), t[i], ((i == length(t)) ? t[1] : t[i+1])
-eachedge(t::T) where {T <: AbstractTour} = EdgeIter(t)
 """
     Tour{T,V}
 
@@ -21,7 +15,6 @@ Base.length(t::Tour) = length(t.v)
 Base.size(t::Tour) = size(t.v)
 
 Base.getindex(t::Tour, i::Int) = getindex(t.v, i)
-
 Base.setindex!(t::Tour, v, i::Int) = setindex!(t.v, v, i)
 
 """
@@ -48,3 +41,5 @@ function Base.pop!(t::Tour)
      pop!(t.v)
      return t
 end
+
+Base.copy(t::Tour) = Tour(copy(t.v))
