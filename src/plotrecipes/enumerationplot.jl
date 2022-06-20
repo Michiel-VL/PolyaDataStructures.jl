@@ -65,12 +65,12 @@ end
 function get_arrows(X, Y)
     V = Vector{Tuple{eltype(X), eltype(Y)}}()
     P = collect(zip(X,Y))
-    @show P
+    #@show P
     I = zip(P[1:end-1], P[2:end])
     for (i,(p1, p2)) in enumerate(I)
         push!(V, p2 .- p1)
     end
-    @show V
+    #@show V
         #push!(V, (0,0))
     return V
 end
