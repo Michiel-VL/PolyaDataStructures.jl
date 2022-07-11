@@ -1,5 +1,5 @@
 # Quadratic iterators
-
+import Base.Iterators: product
 # Precedence to first var, precedence to lower values in each variable
 colmajor(s) = product(indexset(s), indexset(s))
 # Precedence to first var, precedence to lower values in first variable, higher in second variable
@@ -42,3 +42,6 @@ offset5(s) = OffsetOrderIterator(rowmajor(s), length(s))
 offset6(s) = OffsetOrderIterator(rowmajor2(s), length(s))
 offset7(s) = OffsetOrderIterator(rowmajor3(s), length(s))
 offset8(s) = OffsetOrderIterator(rowmajor4(s), length(s))
+
+
+predefined_iterators = [colmajor, colmajor2, colmajor3, colmajor4, rowmajor, rowmajor2, rowmajor3, rowmajor4, offset, offset2, offset3, offset4, offset5, offset6, offset7, offset8]
