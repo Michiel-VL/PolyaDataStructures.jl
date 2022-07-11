@@ -2,7 +2,7 @@ projectonmat((x,y), xn) = (y, xn - (x-1))
 
 
 """
-    enumerationplot(Φ, dims)
+    enumerationplot(Φ, dims; order = true, freecolor = :lightgray, usedcolor = :black, arrowcolor = :black, free)
     
 # Example
 julia> Φ = Iterators.product(1:5, 1:5); dims = (6,6);
@@ -12,7 +12,7 @@ julia> enumerationplot(Φ, dims)
 """
 @userplot EnumerationPlot
 
-@recipe function f(e::EnumerationPlot, order = true)
+@recipe function f(e::EnumerationPlot; order = true, freecolor = :lightgray, usedcolor = :black, arrowcolor = :black)
     Φ = collect(e.args[1])
     dims = e.args[2]
     xn, yn = dims
@@ -29,10 +29,11 @@ julia> enumerationplot(Φ, dims)
     ymirror := false
     legend := false
     
+    # Parameters in product of dims
     @series begin
         seriestype := :scatter
-        markerstrokecolor := :lightgray
-        markercolor := :lightgray
+        markerstrokecolor --> freecolor
+        markercolor --> freecolor
         marker := :circle
         G = Iterators.product(1:first(dims), 1:last(dims))
         first.(G), last.(G)
@@ -40,8 +41,8 @@ julia> enumerationplot(Φ, dims)
 
     @series begin
         seriestype := :scatter
-        color := :black
-        markerstrokecolor := :black
+        color --> usedcolor
+        markerstrokecolor --> usedcolor
         marker := :circle 
         X, Y
     end
@@ -49,10 +50,10 @@ julia> enumerationplot(Φ, dims)
     if order
         @series begin
             seriestype := :quiver
-            color := :black
-            arrow := :closed
-            headlength := 1
-            headwidth := 1
+            color --> arrowcolor
+            arrow --> :closed
+            headlength --> 1
+            headwidth --> 1
             quiver := get_arrows(X[1:end],Y[1:end])
             X[1:end-1], Y[1:end-1]
         end
@@ -64,12 +65,12 @@ end
 function get_arrows(X, Y)
     V = Vector{Tuple{eltype(X), eltype(Y)}}()
     P = collect(zip(X,Y))
-    @show P
+    #@show P
     I = zip(P[1:end-1], P[2:end])
     for (i,(p1, p2)) in enumerate(I)
         push!(V, p2 .- p1)
     end
-    @show V
+    #@show V
         #push!(V, (0,0))
     return V
 end

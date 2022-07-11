@@ -6,6 +6,8 @@ import Base.Iterators: ProductIterator
     struct OrderedProductIterator{I,N}
     
 Datastructure encoding a sequence of the elements of the cartesian product of multiple iterators. The sequence is ordered based on the permutation-passed at construction, where the permutation indicates the order in which the iterators are incremented. The default is the same as the regular ProductIterator, which increments in a lexicographic manner, i.e. the last element first.
+
+Note: this iterator is not typestable if the eltypes of the various iterators in the product are not the same.
 """
 struct OrderedProductIterator{I, N}
     iterator::ProductIterator{I}
@@ -20,8 +22,11 @@ end
 orderedproduct(order, iterators...) = OrderedProductIterator(iterators, order)
 oproduct(order, iterators...) = OrderedProductIterator(iterators, order)
 
+function Base.eltype(o::OrderedProductIterator{I,N}) where {I,N}
+    T = eltype(ProductIterator{I}).parameters
+    return Tuple{map(i -> T[i], order(o))...}
+end
 Base.eltype(::Type{OrderedProductIterator{I,N}}) where {I,N} = eltype(ProductIterator{I})
-
 
 Base.IteratorSize(::Type{OrderedProductIterator{I,N}}) where {I,N} = Base.HasShape{1}()
 

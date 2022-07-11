@@ -40,7 +40,8 @@ module PolyaDataStructures
             uppertriangle,lowertriangle,nodiagonal,
             evenrows,evencols,oddrows,oddcols,
             offset,offset2,offset3,offset4,
-            offset5,offset6,offset7,offset8
+            offset5,offset6,offset7,offset8,
+            predefined_iterators
 
     include("plotrecipes/enumerationplot.jl")
     export enumerationplot, enumerationplot!
